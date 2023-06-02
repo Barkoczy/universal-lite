@@ -1,0 +1,6 @@
+App\Kernel\Router\Entity\Welcome:
+  url: /
+  template: welcome/main.twig
+  data:
+    title: Universal Lite
+    message: Hello, world!

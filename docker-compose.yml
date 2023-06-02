@@ -1,0 +1,39 @@
+version: '3.8'
+services:
+  app:
+    build:
+      args:
+        user: sammy
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: universal-lite
+    container_name: universal-lite
+    restart: unless-stopped
+    working_dir: /var/www/
+    depends_on:
+      - db
+    volumes:
+      - ./:/var/www
+    networks:
+      - universal
+  nginx:
+    image: nginx:alpine
+    restart: unless-stopped
+    ports:
+      - ${PORT}:80
+    volumes:
+      - ./:/var/www
+      - ./src/dist/nginx.conf:/etc/nginx/conf.d/
+    networks:
+      - universal
+  db:
+    image: bitnami/mysql:latest
+    env_file:
+      - .env
+    networks:
+      - universal
+
+networks:
+  universal:
+    driver: bridge

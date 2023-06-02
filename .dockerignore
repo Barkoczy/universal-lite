@@ -1,0 +1,12 @@
+.DS_Store
+.vscode
+.git
+.gitingore*
+.gitattributes
+.dockerignore
+
+Dockerfile
+docker-compose.yml
+
+README.md
+LICENSE
