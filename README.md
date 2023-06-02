@@ -9,26 +9,10 @@ and for otherwise os version see more info on website https://www.docker.com.
 
 #### Bring up local development enviroment via Docker
 
-Create enviroment config file:
+Create and edit enviroment config file:
 
 ```shell
 composer run-script create-env-config-file
-```
-
-Edit enviroment (.env) config file:
-
-```shell
-APP_NAME=UNIVERSAL.lite
-APP_LOCALE=sk
-
-PORT=8000
-
-MYSQL_HOST=localhost
-MYSQL_CHARSET=utf8
-MYSQL_ROOT_PASSWORD=password123
-MYSQL_USER=my_user
-MYSQL_PASSWORD=my_password
-MYSQL_DATABASE=my_database
 ```
 
 #### Run
