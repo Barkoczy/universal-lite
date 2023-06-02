@@ -32,7 +32,12 @@ RUN apt-get update && apt-get install -y \
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
-RUN docker-php-ext-install bcmath mbstring intl curl zip gd exif pcntl pdo_mysql json mcrypt xml
+RUN docker-php-ext-install bcmath mbstring intl curl zip gd exif pcntl pdo_mysql
+
+# Install mcrypt extension
+RUN pecl install mcrypt-1.0.5 \
+    &&  echo "extension=mcrypt.so" > $PHP_INI_DIR/conf.d/docker-php-ext-mcrypt.ini \
+    && docker-php-ext-enable mcrypt
 
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer

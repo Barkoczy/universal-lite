@@ -137,14 +137,12 @@ final class Bootstrap
 
 		// @settings
 		$capsule->addConnection([
-			'driver'    => 'mysql',
-			'host'      => Environment::var('MYSQL_HOST'),
-			'database'  => Environment::var('MYSQL_DATABASE'),
-			'username'  => Environment::var('MYSQL_USER'),
-			'password'  => Environment::var('MYSQL_PASSWORD'),
-			'charset'   => Environment::var('MYSQL_CHARSET'),
-			'collation' => Environment::var('MYSQL_COLLATION'),
-			'prefix'    => ''
+			'driver'   => 'mysql',
+			'host'     => Environment::var('MYSQL_HOST'),
+			'database' => Environment::var('MYSQL_DATABASE'),
+			'username' => Environment::var('MYSQL_USER'),
+			'password' => Environment::var('MYSQL_PASSWORD'),
+			'charset'  => Environment::var('MYSQL_CHARSET'),
 		]);
 
 		// Set the event dispatcher used by Eloquent models... (optional)

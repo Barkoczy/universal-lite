@@ -1,5 +1,13 @@
 version: '3.8'
 services:
+  db:
+    image: bitnami/mysql:latest
+    env_file:
+      - .env
+    volumes:
+      - ./volumes/mysql:/bitnami/mysql/data
+    networks:
+      - universal
   app:
     build:
       args:
@@ -20,17 +28,17 @@ services:
   nginx:
     image: nginx:alpine
     restart: unless-stopped
+    depends_on:
+      - app
     ports:
       - ${PORT}:80
     volumes:
       - ./:/var/www
-      - ./src/dist/nginx.conf:/etc/nginx/conf.d/
-    networks:
-      - universal
-  db:
-    image: bitnami/mysql:latest
-    env_file:
-      - .env
+      - ./src/kernel/conf/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./src/kernel/conf/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./src/kernel/conf/nginx/fastcgi.conf:/etc/nginx/fastcgi.conf
+      - ./src/kernel/conf/nginx/fastcgi-php.conf:/etc/nginx/snippets/fastcgi-php.conf
+      - ./volumes/nginx:/etc/nginx/cache
     networks:
       - universal
 
