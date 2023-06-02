@@ -19,10 +19,16 @@ Edit enviroment (.env) config file:
 
 ```shell
 APP_NAME=UNIVERSAL.lite
-DB_DATABASE=universal
+APP_LOCALE=sk
 
-EMAIL_USERNAME=no-reply@example.com
-EMAIL_PASSWORD=<password>
+PORT=8000
+
+MYSQL_HOST=localhost
+MYSQL_CHARSET=utf8
+MYSQL_ROOT_PASSWORD=password123
+MYSQL_USER=my_user
+MYSQL_PASSWORD=my_password
+MYSQL_DATABASE=my_database
 ```
 
 #### Run
