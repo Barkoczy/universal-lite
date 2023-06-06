@@ -1,14 +1,15 @@
 version: '3.8'
 services:
   db:
-    image: bitnami/mysql:latest
+    image: bitnami/mariadb:latest
     container_name: universal-lite-db
+    restart: unless-stopped
     env_file:
       - .env
     ports:
-      - ${MYSQL_PORT}:3306
+      - ${MARIADB_PORT}:3306
     volumes:
-      - ./volumes/mysql:/bitnami/mysql/data
+      - ./volumes/mariadb:/bitnami/mariadb
     networks:
       - universal
   app:

@@ -138,11 +138,11 @@ final class Bootstrap
 		// @settings
 		$capsule->addConnection([
 			'driver'   => 'mysql',
-			'host'     => Environment::var('MYSQL_HOST'),
-			'database' => Environment::var('MYSQL_DATABASE'),
-			'username' => Environment::var('MYSQL_USER'),
-			'password' => Environment::var('MYSQL_PASSWORD'),
-			'charset'  => Environment::var('MYSQL_CHARSET'),
+			'host'     => Environment::var('MARIADB_HOST'),
+			'database' => Environment::var('MARIADB_DATABASE'),
+			'username' => Environment::var('MARIADB_USER'),
+			'password' => Environment::var('MARIADB_PASSWORD'),
+			'charset'  => Environment::var('MARIADB_CHARSET'),
 		]);
 
 		// Set the event dispatcher used by Eloquent models... (optional)
