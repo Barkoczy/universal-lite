@@ -1,0 +1,9 @@
+# ISO 3166-1 >> https://en.wikipedia.org/wiki/ISO_3166-1
+- iso: sk
+  code: svk
+  num: 703
+  name: Slovenčina
+  translate:
+    - iso: en
+      name: Slovakia
+      international: true

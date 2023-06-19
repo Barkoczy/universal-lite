@@ -76,6 +76,16 @@ final class Folder
   }
 
   /**
+   * Language path
+   *
+   * @return string
+   */
+  public static function getLanguageConfPath(): string
+  {
+    return realpath(self::getKernelPath().'/'.Directory::LANGUAGE.'/'.Directory::CONF);
+  }
+
+  /**
    * Console path
    *
    * @return string

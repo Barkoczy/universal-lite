@@ -7,6 +7,7 @@ final class Directory
   const APP = 'app';
   const API = 'api';
   const KERNEL = 'kernel';
+  const LANGUAGE = 'language';
   const CONSOLE = 'console';
   const CONTROLLERS = 'controllers';
   const ROUTER = 'router';

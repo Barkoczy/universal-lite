@@ -24,6 +24,7 @@ use Slim\Views\TwigMiddleware;
 use Slim\Middleware\ContentLengthMiddleware;
 use App\Kernel\Environment;
 use App\Kernel\Filesystem\Folder;
+use App\Kernel\Language\Language;
 use App\Kernel\Controllers\AppController;
 use App\Kernel\Router\Enum\Method;
 use App\Kernel\Router\Enum\RouteObject;
@@ -63,6 +64,9 @@ final class Bootstrap
 
 		// @Database
 		$this->database();
+
+		// @Language
+		$this->language();
 
 		// @Template
 		$this->template();
@@ -163,6 +167,18 @@ final class Bootstrap
 	}
 
 	/**
+	 * Language
+	 *
+	 * @return void
+	 */
+	private function language(): void
+	{
+		$this->container->set('lang', function () {
+			return new Language();
+		});
+	}
+
+	/**
 	 * Template
 	 *
 	 * @return void
@@ -175,8 +191,11 @@ final class Bootstrap
 				'console' => Folder::getConsoleTemplatesPath(),
 				'theme'   => Folder::getAppThemesPath().'/'.Environment::var('APP_THEME'),
 			], [
-				'cache' => ("false" === Environment::var('TWIG_CACHE')) ? false : '../cache/twig'
+				'cache' => "false" === Environment::var('TWIG_CACHE') ? false : '../cache/twig'
 			]);
+
+			// @global
+			$twig->getEnvironment()->addGlobal('lang', $this->container->get('lang')->getWeb());
 
 			// @ext
 			$twig->addExtension(new \voku\twig\MinifyHtmlExtension((new \voku\helper\HtmlMin()), true));
